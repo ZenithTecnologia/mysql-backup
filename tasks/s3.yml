@@ -73,4 +73,3 @@
       {{ _remote.secretKey | default(omit) }}\
       {% endif %}"
   no_log: "{{ mysql_backup.debug | default(false) | ternary(false, true) }}"
-  until: item.rc == 0
