@@ -54,7 +54,7 @@
     object: "{{ _target.path | default('') }}/{{ _backup_file_prefix }}-0.{{ _backup_file_suffix }}"
     src: "{{ _backup_file_path }}"
     mode: put
-    s3_url: "{{ _backup.s3Url | default(omit) }}"
+    endpoint_url: "{{ _backup.s3Url | default(omit) }}"
     region: "{{ _remote.region | default(omit) }}"
     encrypt: no
     permission: private
