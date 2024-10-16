@@ -60,8 +60,6 @@
     permission: private
     retry: "{{ _backup.retries | default(omit) }}"
     delay: "{{ _backup.retryDelay | default(omit) }}"
-    register: _result
-    until: _result.rc == 0
     aws_access_key: "\
       {% if _remote.accessKeyFile is defined %}\
       {{ lookup('file', _remote.accessKeyFile) }}\
@@ -75,4 +73,5 @@
       {{ _remote.secretKey | default(omit) }}\
       {% endif %}"
   no_log: "{{ mysql_backup.debug | default(false) | ternary(false, true) }}"
-
+  register: _result
+  until: _result.rc == 0
